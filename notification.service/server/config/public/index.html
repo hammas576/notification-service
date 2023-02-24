@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello!</title>
+  </head>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io.connect(window.location.origin, {
+      query: 'userId=1234567',
+    });
+    socket.on('notification', message => {
+      console.log('client is connected', message);
+    });
+  </script>
+  <body>
+    Integrating Socket.io with Node.js and Express
+  </body>
+</html>

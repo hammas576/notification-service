@@ -1,0 +1,54 @@
+# YML version
+version: '3'
+
+# Define all the services our book application needs
+services:
+  notification-service: # node application
+    restart: always # automatically restart if the app fails
+    build: ./notification.service # build the image from the dockerfile present in the order-service directory
+    image: notification-service:dev
+    depends_on:
+      - rabbitmq
+    environment: # environment variables
+      - PORT=5555
+      - SLEEP_TIME=20000
+      - RABBIT_MQ_HOST=rabbitmq
+      - RABBIT_MQ_PORT=5672
+      - RABBIT_MQ_USER_NAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - NOTIFICATION_QUEUE=NOTIFICATION
+      - EMAIL_QUEUE=EMAIL
+      - MAILING_SERVER=***
+      - SMTP_HOST=***
+      - SMTP_PORT=***
+      - SMTP_USER=***
+      - SMTP_PASSWORD=***
+      - SMTP_FROM=***
+    ports:
+      - '3001:5555' # map the ports as <host-port>:<container-port . The container-port should be the same as the PORT defined in environment.
+
+  user-management-service: # node application
+    restart: always # automatically restart if the app fails
+    build: ./user.management.services # build the image from the dockerfile present in the order-service directory
+    image: user-management-services:dev
+    depends_on:
+      - rabbitmq
+    environment: # environment variables
+      - SLEEP_TIME=20000
+      - PORT=5234
+      - RABBIT_MQ_HOST=rabbitmq
+      - RABBIT_MQ_PORT=5672
+      - RABBIT_MQ_USER_NAME=guest
+      - RABBIT_MQ_PASSWORD=guest
+      - NOTIFICATION_QUEUE=NOTIFICATION
+      - EMAIL_QUEUE=EMAIL
+    ports:
+      - '3002:5234' # map the ports as <host-port>:<container-port . The container-port should be the same as the PORT defined in environment.
+
+  rabbitmq: # rabbitmq
+    image: rabbitmq:3-management # pull the rabbitmq image from  dockerhub
+    logging:
+      driver: none # disable logging
+    ports:
+      - '5672:5672'
+      - 15672:15672

@@ -1,0 +1,20 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": ["jsx-a11y", "import"],
+  "rules": {
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-quotes": ["error", "prefer-single"],
+    "eol-last": ["error", "always"],
+    "no-plusplus": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "document": false
+  }
+}
