@@ -15,8 +15,7 @@ A distributed system developed with RabbitMQ, Node.js, Express.js and Docker <br
 <br>
 
 ## System Architecture and Flow
-
-<br><br>
+<br>
 Notification-service mimics distributed systems where the components of the system are loosely coupled. The system consists of microservices architecture. It contains a user management service and a notification service. Both of the services communicate asynchronously through rabbit mq utilizing the amqp protocol. The amqp protocol is around 4 times faster than the traditional request response http protocol. We communicate with the user management service via REST endpoints the user management service than processes our data and forwards it to the respective rabbit mq queues the notification service consumes the data from the queues and passes it to the socket server passing it to the connected client whose id has been passed previously, mimicing a real world scenario where we need to generate notifications and sending emails via a separte notification service. The notification service is loosely coupled and is a standalone service and any number of services can send their notifications and emails via the notification service.
 
 ## Getting Started with Docker
