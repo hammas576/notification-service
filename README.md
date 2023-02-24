@@ -1,7 +1,7 @@
 ﻿# Notification-service
 
 <p align="center">
-A distributed system developed with RabbitMQ, Node.js and Express. <br><br>
+A distributed system developed with RabbitMQ, Node.js, Express.js and Docker <br><br>
   <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Node.js_logo_2015.svg/1200px-Node.js_logo_2015.svg.png">
     <img alt="Node" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Node.js_logo_2015.svg/1200px-Node.js_logo_2015.svg.png" height=50 width=186/>
   </a>
